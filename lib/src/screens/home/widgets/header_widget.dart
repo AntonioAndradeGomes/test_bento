@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:test_bento/src/shared/app_assets.dart';
-import 'package:test_bento/src/shared/app_colors.dart';
+import 'package:test_bento/src/shared/constants/app_assets.dart';
+import 'package:test_bento/src/shared/constants/app_colors.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -11,7 +11,7 @@ class HeaderWidget extends StatelessWidget {
     double statusBarHeight = MediaQuery.of(context).padding.top;
     return Padding(
       padding: EdgeInsets.only(
-        top: statusBarHeight + 5,
+        top: statusBarHeight,
         left: 15,
         right: 15,
         bottom: 5,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:test_bento/src/models/product_model.dart';
 import 'package:test_bento/src/screens/details/details_page.dart';
-import 'package:test_bento/src/shared/app_colors.dart';
+import 'package:test_bento/src/shared/constants/app_colors.dart';
 
 class ProductItemWidget extends StatelessWidget {
   final ProductModel product;

@@ -1,4 +1,4 @@
-import 'package:test_bento/src/shared/app_assets.dart';
+import 'package:test_bento/src/shared/constants/app_assets.dart';
 
 enum CategoryEnum {
   vegan(

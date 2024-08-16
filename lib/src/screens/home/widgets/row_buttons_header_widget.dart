@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_bento/src/screens/home/widgets/button_header_widget.dart';
-import 'package:test_bento/src/shared/app_assets.dart';
+import 'package:test_bento/src/shared/constants/app_assets.dart';
 
 class RowButtonsHeaderWidget extends StatelessWidget {
   const RowButtonsHeaderWidget({super.key});

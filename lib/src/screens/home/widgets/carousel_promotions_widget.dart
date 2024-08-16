@@ -1,85 +1,81 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:test_bento/src/screens/home/widgets/carousel_container_widget.dart';
-import 'package:test_bento/src/shared/app_assets.dart';
-import 'package:test_bento/src/shared/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:test_bento/src/models/promotion_model.dart';
+import 'package:test_bento/src/shared/constants/app_colors.dart';
 
-class CarouselPromotionsWidget extends StatefulWidget {
-  const CarouselPromotionsWidget({super.key});
+class CarouselPromotionsWidget extends StatelessWidget {
+  final PromotionModel promotion;
+  const CarouselPromotionsWidget({
+    super.key,
+    required this.promotion,
+  });
 
-  @override
-  State<CarouselPromotionsWidget> createState() =>
-      _CarouselPromotionsWidgetState();
-}
-
-class _CarouselPromotionsWidgetState extends State<CarouselPromotionsWidget> {
-  int page = 0;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 20,
+    return Container(
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: const Color(0xFFf3f5de),
+        borderRadius: BorderRadius.circular(15),
       ),
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CarouselSlider(
-            items: const [
-              CarouselContainerWidget(
-                text1: 'Top deal!',
-                text2: 'FRESH AVOCADO',
-                text3: 'UP TO 15% OFF',
-                asset: AppAssets.avocado,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                promotion.label1,
+                style: GoogleFonts.openSans(
+                  color: AppColors.buttonColor,
+                  fontSize: 15,
+                ),
               ),
-              CarouselContainerWidget(
-                text1: 'Great offer!',
-                text2: 'FRESH LEMON',
-                text3: 'UP TO 10% OFF',
-                asset: AppAssets.lemon,
+              Text(
+                promotion.label2,
+                style: GoogleFonts.openSans(
+                  color: AppColors.buttonColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              CarouselContainerWidget(
-                text1: 'So today!',
-                text2: 'ORANGE',
-                text3: 'UP TO 5% OFF',
-                asset: AppAssets.orange,
+              Text(
+                promotion.label3,
+                style: GoogleFonts.openSans(
+                  color: AppColors.buttonColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 45,
+                child: FilledButton(
+                  onPressed: () {},
+                  style: FilledButton.styleFrom(
+                    backgroundColor: AppColors.buttonColor,
+                    padding: const EdgeInsets.symmetric(
+                      //vertical: 15,
+                      horizontal: 20,
+                    ),
+                  ),
+                  child: Text(
+                    'Shop Now',
+                    style: GoogleFonts.openSans(
+                      color: AppColors.containerColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
               ),
             ],
-            options: CarouselOptions(
-              autoPlay: true,
-              autoPlayInterval: const Duration(
-                seconds: 5,
-              ),
-              reverse: false,
-              viewportFraction: 1,
-              onPageChanged: (index, _) {
-                setState(() {
-                  page = index;
-                });
-              },
-            ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              3,
-              (index) => AnimatedContainer(
-                duration: const Duration(
-                  milliseconds: 300,
-                ),
-                width: index != page ? 6 : 30,
-                height: 6,
-                margin: const EdgeInsets.only(
-                  right: 3,
-                ),
-                decoration: BoxDecoration(
-                  color: index != page ? Colors.grey : AppColors.containerColor,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-              ),
-            ),
+          Image.asset(
+            promotion.urlImage,
           ),
         ],
       ),

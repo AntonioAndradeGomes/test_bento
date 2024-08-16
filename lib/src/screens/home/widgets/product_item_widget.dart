@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:test_bento/src/models/product_model.dart';
+import 'package:test_bento/src/screens/details/details_page.dart';
 import 'package:test_bento/src/shared/app_colors.dart';
 
 class ProductItemWidget extends StatelessWidget {
@@ -14,7 +15,16 @@ class ProductItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(15),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => DetailsPage(
+              product: product,
+            ),
+          ),
+        );
+      },
       child: Ink(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
